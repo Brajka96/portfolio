@@ -32,3 +32,84 @@
     }
   }
 }
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  opacity: 0.9;
+  visibility: hidden;
+
+  &.show {
+    visibility: visible;
+  }
+
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    width: 50%;
+    float: left;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+
+  &-nav {
+    background: darken($primary-color, 5);
+    list-style: none;
+    transform: translate3d(0, -100%, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .nav-item {
+      transform: translate3d(600px, 0, 0);
+      @include easeOut;
+
+      &.show {
+        transform: translate3d(0, 0, 0);
+      }
+
+      &.current > a {
+        color: $secondary-color;
+      }
+    }
+
+    .nav-link {
+      font-size: 30px;
+      padding: 5px 0;
+      @include easeOut;
+
+      &:hover {
+        color: $secondary-color;
+      }
+    }
+  }
+
+  &-branding {
+    background: $primary-color;
+    transform: translate3d(0, 100%, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portret {
+      width: 250px;
+      height: 250px;
+      background: url("https://avatars.servers.getgo.com/2205256774854474505_medium.jpg");
+      border: 3px solid $secondary-color;
+      border-radius: 50%;
+    }
+  }
+}
+
+@for $x from 1 through 4 {
+  .nav-item:nth-child(#{$x}) {
+    transition-delay: $x * 0.1s;
+  }
+}
