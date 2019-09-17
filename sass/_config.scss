@@ -28,3 +28,63 @@ $background-opacity: 0.9;
     }
   }
 }
+
+//Media Query
+
+@mixin mediaSm {
+  @media only screen and(max-width: 500px) {
+    @content;
+  }
+}
+
+@mixin mediaMd {
+  @media only screen and(max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin mediaLg {
+  @media only screen and (min-width: 769px) and (max-width: 1170px) {
+    @content;
+  }
+}
+
+@mixin mediaXl {
+  @media only screen and(min-width: 1171px) {
+    @content;
+  }
+}
+
+//set text color
+
+@function set-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
+
+// custom scroll bar
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px $primary-color;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $secondary-color;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: darken($secondary-color, 20);
+}

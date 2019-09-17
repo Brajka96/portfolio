@@ -10,7 +10,7 @@
     width: 28px;
     height: 3px;
     margin-bottom: 5px;
-    background: #ffffff;
+    background: set-text-color($primary-color);
     @include easeOut;
   }
 
@@ -79,6 +79,12 @@
     }
 
     .nav-link {
+      position: relative;
+      display: inline-block;
+      color: set-text-color($primary-color);
+      text-transform: uppercase;
+      font-weight: 300;
+      text-decoration: none;
       font-size: 30px;
       padding: 5px 0;
       @include easeOut;
